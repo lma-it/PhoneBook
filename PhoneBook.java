@@ -170,8 +170,8 @@ public class PhoneBook {
         if (phoneBook.containsKey(user)){
             return phoneBook.get(user);
         }
-        var notKet = new ArrayList<Long>();
-        return notKet;
+        var notKeyinThePhoneBook = new ArrayList<Long>();
+        return notKeyinThePhoneBook;
     }
 
     /**
