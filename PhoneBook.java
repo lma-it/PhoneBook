@@ -63,6 +63,7 @@ public class PhoneBook {
         phoneBook.add(john, List.of(1231254L, 1242361L, 639L));
 
         phoneBook.printAll();
+        println(phoneBook.getPhones(elice));
     }
 
     /**
@@ -157,5 +158,35 @@ public class PhoneBook {
             println("Имя: " + entry.getKey() + ", Список телефонов: " + entry.getValue());
         }
         
+    }
+
+    /**
+     * Возвращает список телефонных номеров для указанного пользователя.
+     * @param user Пользователь, для которого нужно получить список телефонных номеров.
+     * @return Список телефонных номеров пользователя, если он есть в телефонной книге.
+     * Если пользователя нет в телефонной книге, возвращает пустой список.
+     */
+    public ArrayList<Long> getPhones(User user){
+        if (phoneBook.containsKey(user)){
+            return phoneBook.get(user);
+        }
+        var notKet = new ArrayList<Long>();
+        return notKet;
+    }
+
+    /**
+     * Возвращает пользователя по его телефонному номеру.
+     * @param phone Телефонный номер, по которому нужно найти пользователя.
+     * @return Пользователь, соответствующий указанному телефонному номеру.
+     * Если телефонный номер не найден, возвращает "[]".
+     */
+    public User getUser(Long phone){
+        User user = new User("[]");
+        for (Map.Entry<User, ArrayList<Long>> entry : phoneBook.entrySet()) {
+            if (entry.getValue().contains(phone)) {
+                return entry.getKey();
+            }
+        }
+        return user;
     }
 }
